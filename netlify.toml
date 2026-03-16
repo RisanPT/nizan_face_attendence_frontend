@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
+# Proxy all /api/* requests to the EC2 backend (fixes Mixed Content / HTTPS issue)
+[[redirects]]
+  from = "/api/*"
+  to = "http://35.154.161.122:8000/api/:splat"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
